@@ -1,0 +1,49 @@
+<!-- templates/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Home Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://netdna.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet">
+    <style type="text/css">
+        /* Add your custom styles here */
+        body {
+            margin-top: 20px;
+            background: #eee;
+        }
+        /* ... (other CSS styles) */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1>Welcome to Your Application</h1>
+                <p>This is the home page of your application.</p>
+
+{#                add profile contents, if user is logged in#}
+                {% if user.is_authenticated %}
+                    <h3>Your Profile <em>{{ user.full_name }}</em></h3>
+                    <p>Username: {{ user.username }}</p>
+                    <p>Email: {{ user.email }}</p>
+                    <p>Phone Number: {{ user.phone }}</p>
+                    <h1>About me: {{ user.description }}</h1>
+
+                <p><a href="{% url 'login' %}">Logout</a></p>
+                {% endif %}
+
+                <div class="mt-3">
+                    <a class="btn btn-primary" href="{% url 'login' %}">Login</a>
+                    <a class="btn btn-success" href="{% url 'signup' %}">Sign Up</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="https://netdna.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        // Add your custom JavaScript code here
+    </script>
+</body>
+</html>
